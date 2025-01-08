@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use View;
 
 class ArtistController extends Controller
 {
     public function index() {
-        return "hello world index atist";
+        
+        $data['name'] = "my laravel";
+        return View::make('artist', $data);
     }
 
     public function create() {
