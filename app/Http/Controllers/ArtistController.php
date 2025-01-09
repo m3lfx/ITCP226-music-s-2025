@@ -16,4 +16,16 @@ class ArtistController extends Controller
     public function create() {
         return "create artist";
     }
+
+    public function edit() {
+        return "edit artist";
+    }
+
+    public function update() {
+        return "update artist";
+    }
+
+    public function delete() {
+        return "delete artist";
+    }
 }
