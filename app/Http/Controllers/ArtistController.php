@@ -40,13 +40,24 @@ class ArtistController extends Controller
         return view('home', compact('artist'));
     }
 
-    public function update()
+    public function update($id)
     {
+        // $artist = Artist::where('id',$id)->orWhere('id', 2)->get();
+        $artist = Artist::find([1,2]);
+        // $artist->name = 'new artist jan 9';
+        // $artist->country = 'zimbabwe';
+        // $artist->save();
+        
+        dd($artist);
+
         return "update artist";
     }
 
-    public function delete()
+    public function delete($id)
     {
-        return "delete artist";
+        // $artist = Artist::find($id)->delete();
+        // $artist->delete();
+        Artist::destroy($id);
+        return "artist deleted";
     }
 }

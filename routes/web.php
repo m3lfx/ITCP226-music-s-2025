@@ -93,7 +93,10 @@ Route::prefix('artists')->group(function () {
     Route::get('/edit/{id}', [ArtistController::class, 'edit'])->name('artist.edit');
    
     
-    Route::get('/update', [ArtistController::class, 'update'])->name('artist.update');
-    Route::get('/delete', [ArtistController::class, 'delete'])->name('artist.delete');
+    Route::get('/update/{id}', [ArtistController::class, 'update'])->name('artist.update');
+
+
+    Route::get('/delete/{id}', [ArtistController::class, 'delete'])->name('artist.delete');
+    
     Route::get('/store', [ArtistController::class, 'store'])->name('artist.store');
 });
