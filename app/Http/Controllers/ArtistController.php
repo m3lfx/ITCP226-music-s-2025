@@ -10,9 +10,10 @@ class ArtistController extends Controller
 {
     public function index()
     {
+        $artists = Artist::all();
+        // dd(compact('artists'));
 
-        $data['name'] = "my laravel";
-        return View::make('artist', $data);
+        return view('artist.index', compact('artists'));
     }
 
     public function create()
@@ -26,6 +27,17 @@ class ArtistController extends Controller
         $artist->name = 'artist 1';
         $artist->country = 'philippines';
         $artist->img_path = 'artist1.jpg';
+        $artist->save();
+        $artist = new Artist();
+        $artist->name = 'artist 2';
+        $artist->country = 'korea';
+        $artist->img_path = 'artist1.jpg';
+        $artist->save();
+
+        $artist = new Artist();
+        $artist->name = 'artist 3';
+        $artist->country = 'italy';
+        $artist->img_path = 'artist3.jpg';
         $artist->save();
     }
 
@@ -43,11 +55,11 @@ class ArtistController extends Controller
     public function update($id)
     {
         // $artist = Artist::where('id',$id)->orWhere('id', 2)->get();
-        $artist = Artist::find([1,2]);
+        $artist = Artist::find([1, 2]);
         // $artist->name = 'new artist jan 9';
         // $artist->country = 'zimbabwe';
         // $artist->save();
-        
+
         dd($artist);
 
         return "update artist";
