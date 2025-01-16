@@ -1,5 +1,6 @@
 @extends('layouts.base')
 @section('body')
+<a href="{{url('/artists/create')}}" class="btn btn-primary btn-sm " tabindex="-1" role="button" aria-disabled="true">Add artist</a>
     <table class="table stripe hover">
         <thead>
             <tr>
