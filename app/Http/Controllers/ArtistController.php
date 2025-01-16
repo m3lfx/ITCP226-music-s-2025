@@ -24,7 +24,6 @@ class ArtistController extends Controller
     public function store(Request $request)
     {
         // dd($request->img_path);
-       
         $artist = new Artist();
         $artist->name = trim($request->name);
         $artist->country = trim($request->country);
@@ -36,25 +35,20 @@ class ArtistController extends Controller
     public function edit($id)
     {
         $artist = Artist::find($id);
-        // dd($artist->name);
-        // $data['artist'] = $artist;
-        // dd($data);
-        // return view('home', $data);
-        // dd(compact('artist'));
-        return view('home', compact('artist'));
+
+        return view('artist.edit', compact('artist'));
     }
 
-    public function update($id)
+    public function update(Request $request, $id)
     {
-        // $artist = Artist::where('id',$id)->orWhere('id', 2)->get();
-        $artist = Artist::find([1, 2]);
-        // $artist->name = 'new artist jan 9';
-        // $artist->country = 'zimbabwe';
-        // $artist->save();
+        // dd($request);
+        $artist = Artist::find($id);
+        $artist->name = trim($request->name);
+        $artist->country = trim($request->country);
+        $artist->img_path = trim($request->img_path);
+        $artist->save();
 
-        dd($artist);
-
-        return "update artist";
+        return redirect()->route('artist.index');
     }
 
     public function delete($id)

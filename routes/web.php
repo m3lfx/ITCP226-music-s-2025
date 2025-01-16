@@ -89,14 +89,9 @@ Route::get('/artists', [ArtistController::class, 'index'])->name('artist.index')
 
 Route::prefix('artists')->group(function () {
     Route::get('/create', [ArtistController::class, 'create'])->name('artist.create');
-   
-    Route::get('/edit/{id}', [ArtistController::class, 'edit'])->name('artist.edit');
-   
-    
-    Route::get('/update/{id}', [ArtistController::class, 'update'])->name('artist.update');
-
-
-    Route::get('/delete/{id}', [ArtistController::class, 'delete'])->name('artist.delete');
-    
     Route::post('/store', [ArtistController::class, 'store'])->name('artist.store');
+
+    Route::get('/edit/{id}', [ArtistController::class, 'edit'])->name('artist.edit');
+    Route::post('/update/{id}', [ArtistController::class, 'update'])->name('artist.update');
+    Route::get('/delete/{id}', [ArtistController::class, 'delete'])->name('artist.delete');
 });
