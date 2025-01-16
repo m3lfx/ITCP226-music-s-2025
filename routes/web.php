@@ -98,5 +98,5 @@ Route::prefix('artists')->group(function () {
 
     Route::get('/delete/{id}', [ArtistController::class, 'delete'])->name('artist.delete');
     
-    Route::get('/store', [ArtistController::class, 'store'])->name('artist.store');
+    Route::post('/store', [ArtistController::class, 'store'])->name('artist.store');
 });

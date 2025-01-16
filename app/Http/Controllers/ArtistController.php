@@ -18,27 +18,19 @@ class ArtistController extends Controller
 
     public function create()
     {
-        return "create artist";
+        return view('artist.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
+        // dd($request->img_path);
+       
         $artist = new Artist();
-        $artist->name = 'artist 1';
-        $artist->country = 'philippines';
-        $artist->img_path = 'artist1.jpg';
+        $artist->name = trim($request->name);
+        $artist->country = trim($request->country);
+        $artist->img_path = trim($request->img_path);
         $artist->save();
-        $artist = new Artist();
-        $artist->name = 'artist 2';
-        $artist->country = 'korea';
-        $artist->img_path = 'artist1.jpg';
-        $artist->save();
-
-        $artist = new Artist();
-        $artist->name = 'artist 3';
-        $artist->country = 'italy';
-        $artist->img_path = 'artist3.jpg';
-        $artist->save();
+        return redirect('/artists');
     }
 
     public function edit($id)
