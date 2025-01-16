@@ -56,6 +56,6 @@ class ArtistController extends Controller
         // $artist = Artist::find($id)->delete();
         // $artist->delete();
         Artist::destroy($id);
-        return "artist deleted";
+        return redirect()->route('artist.index');
     }
 }

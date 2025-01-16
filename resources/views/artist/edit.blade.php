@@ -2,6 +2,7 @@
 @section('body')
     <div class="container-lg">
         {{-- {{dd($artist)}} --}}
+        
         <form action="{{ route('artist.update', ['id' => $artist->id ]) }}" method="POST">
             @csrf
             <div class="mb-3">
