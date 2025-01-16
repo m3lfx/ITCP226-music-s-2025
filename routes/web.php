@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArtistController;
+use App\Http\Controllers\AlbumController;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,3 +96,5 @@ Route::prefix('artists')->group(function () {
     Route::post('/update/{id}', [ArtistController::class, 'update'])->name('artist.update');
     Route::get('/delete/{id}', [ArtistController::class, 'delete'])->name('artist.delete');
 });
+
+Route::resource('albums', AlbumController::class);
