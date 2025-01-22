@@ -14,7 +14,13 @@ class AlbumController extends Controller
      */
     public function index()
     {
-        //
+        $albums = DB::table('albums AS al')
+            ->join('artists AS ar', 'ar.id', '=', 'al.artist_id')
+           
+             ->select('al.id', 'al.title', 'ar.name', 'al.genre', 'al.date_released')
+             ->get();
+        //    dd($albums); 
+        return view('album.index', compact('albums'));
     }
 
     /**
@@ -55,15 +61,17 @@ class AlbumController extends Controller
     public function edit(string $id)
     {
         $album = Album::find($id);
-        $artist_album = DB::table('artists')
-                    ->select('id', 'name')
-                    ->where('id', '=', $album->artist_id)->toSql();
-        $artists = DB::table('artists')
-                    ->select('id', 'name')
-                    ->where('id', '<>', $album->artist_id)->toSql();
+        // $artist_album = DB::table('artists')
+        //             ->select('id', 'name')
+        //             ->where('id', '=', $album->artist_id)->toSql();
+        // $artists = DB::table('artists')
+        //             ->select('id', 'name')
+        //             ->where('id', '<>', $album->artist_id)->toSql();
         // dd($artist_album->name, $artist_album->id);
         // dd($artist_album);
-        return view('album.edit', compact('album', 'artist_album', 'artists'));
+        $artists = Artist::all();
+        // return view('album.edit', compact('album', 'artist_album', 'artists'));
+        return view('album.edit', compact('artists', 'album'));
     }
 
     /**
