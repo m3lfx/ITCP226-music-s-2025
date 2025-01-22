@@ -16,9 +16,8 @@ class AlbumController extends Controller
     {
         $albums = DB::table('albums AS al')
             ->join('artists AS ar', 'ar.id', '=', 'al.artist_id')
-           
-             ->select('al.id', 'al.title', 'ar.name', 'al.genre', 'al.date_released')
-             ->get();
+            ->select('al.id AS album_id', 'al.title', 'ar.name', 'al.genre', 'al.date_released')
+            ->get();
         //    dd($albums); 
         return view('album.index', compact('albums'));
     }
@@ -79,7 +78,17 @@ class AlbumController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $album = Album::where('id', $id)
+                    ->update([
+                        'title' => trim($request->title),
+                        'genre' => $request->genre,
+                        'date_released' => $request->date_released,
+                        'artist_id' => $request->artist_id,
+                    ]);
+        if ($album) {
+            return redirect()->route('albums.index');
+        }
+        return redirect()->back();
     }
 
     /**

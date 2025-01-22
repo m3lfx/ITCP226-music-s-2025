@@ -2,8 +2,9 @@
 @section('body')
     <div class="container-lg">
         {{-- {{dd($artists, $album)}} --}}
-        <form action="{{ url('/albums') }}" method="POST">
+        <form action="{{ route('albums.update', $album->id) }}" method="POST">
             @csrf
+            @method('PUT')
             <div class="mb-3">
                 <label for="title" class="form-label">Album title</label>
                 <input type="text" name="title" value="{{ $album->title }}" class="form-control" id="title"
