@@ -12,20 +12,27 @@ class UserController extends Controller
         // dd(Hash::make($request->password));
         $user = User::create([
             'email' => trim($request->email),
-            'password' => Hash::make($request->password),
+            'password' => bcrypt($request->password),
             'name' => $request->fname. " ". $request->lname
         ]);
 
-        $user = Listener::create([
+        // $path = $request->file('img_path')->store('images');
+
+        $path = $request->file('img_path')->storeAs(
+            'public/images', $request->file('img_path')->hashName()
+        );
+        // dd($path);
+        $listener = Listener::create([
             'fname' => trim($request->fname),
             'lname' => trim($request->lname),
             'address' => $request->address,
-            'img_path' => $request->img_path,
+            'img_path' => $path,
             'user_id' => $user->id
 
         ]);
 
-        dd($user);
+        dd($listener);
+        // return redirect()->route('user.profile');
         
     }
 }

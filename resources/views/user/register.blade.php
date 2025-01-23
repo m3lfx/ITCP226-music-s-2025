@@ -31,7 +31,7 @@
 
             <div class="mb-3">
                 <label for="image" class="form-label">user Image</label>
-                <input type="text" class="form-control" name="img_path" id="image" aria-describedby="image">
+                <input type="file" class="form-control" name="img_path" id="image" aria-describedby="image">
             </div>
 
 
