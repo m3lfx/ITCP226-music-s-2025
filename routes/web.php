@@ -100,5 +100,5 @@ Route::prefix('artists')->group(function () {
 
 Route::view('/register', 'user.register');
 Route::post('/user/register', [UserController::class, 'register'])->name('user.register'); 
-
+Route::get('/user/profile', [UserController::class, 'profile'])->name('user.profile');
 Route::resource('albums', AlbumController::class);

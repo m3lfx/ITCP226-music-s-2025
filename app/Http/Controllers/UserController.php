@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Listener;
 use App\Models\User;
 use Hash;
+use Auth;
 class UserController extends Controller
 {
     public function register(Request $request){
@@ -31,8 +32,15 @@ class UserController extends Controller
 
         ]);
 
-        dd($listener);
-        // return redirect()->route('user.profile');
+        // dd($listener);
+        Auth::login($user);
+        return redirect()->route('user.profile');
         
+    }
+
+    public function profile() {
+        $user = Auth::user();
+        // dd($user);
+        return view('user.profile', compact('user'));
     }
 }
