@@ -15,7 +15,7 @@
             @csrf
             <div class="mb-3">
                 <label for="fname" class="form-label">First Name</label>
-                <input type="text" class="form-control" name="fname" id="fname" aria-describedby="name">
+                <input type="text" class="form-control" name="fname" id="fname" value="{{ old('fname')}}" aria-describedby="name">
             </div>
             @error('fname')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -23,7 +23,7 @@
 
             <div class="mb-3">
                 <label for="lname" class="form-label">last Name</label>
-                <input type="text" class="form-control" name="lname" id="lname" aria-describedby="name">
+                <input type="text" class="form-control" name="lname"  value="{{ old('lname')}}" id="lname" aria-describedby="name">
             </div>
             @error('lname')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -31,7 +31,7 @@
 
             <div class="mb-3">
                 <label for="email" class="form-label">email</label>
-                <input type="text" class="form-control" name="email" id="email" aria-describedby="name">
+                <input type="text" class="form-control" name="email" value="{{ old('email') }}" id="email" aria-describedby="name">
             </div>
             @error('email')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -47,7 +47,7 @@
 
             <div class="mb-3">
                 <label for="address" class="form-label">address</label>
-                <input type="text" class="form-control" name="address" id="address" aria-describedby="country">
+                <input type="text" class="form-control" name="address" id="address" value="{{ old('address')}}" aria-describedby="country">
             </div>
 
             <div class="mb-3">
