@@ -41,6 +41,8 @@ class UserController extends Controller
     public function profile() {
         $user = Auth::user();
         // dd($user);
-        return view('user.profile', compact('user'));
+        $listener = Listener::where('user_id', Auth::user()->id)->first(['fname', 'lname', 'address', 'img_path']);
+        // dd($listener);
+        return view('user.profile', compact('user', 'listener'));
     }
 }

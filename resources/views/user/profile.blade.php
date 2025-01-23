@@ -10,7 +10,7 @@
             <div class="row g-0">
               <div class="col-md-4 gradient-custom text-center text-black"
                 style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
-                <img src=""
+                <img src="{{Storage::url($listener->img_path)}}"
                   alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
                 <h5>{{$user->name}}</h5>
                 <p>Web Designer</p>
@@ -27,7 +27,7 @@
                     </div>
                     <div class="col-6 mb-3">
                       <h6>Address</h6>
-                      <p class="text-muted"></p>
+                      <p class="text-muted">{{$listener->address}}</p>
                     </div>
                   </div>
                   <h6>Projects</h6>
