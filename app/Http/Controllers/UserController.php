@@ -11,6 +11,12 @@ class UserController extends Controller
 {
     public function register(Request $request){
         // dd(Hash::make($request->password));
+        $validated = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:6',
+            'lname' => 'required|alpha',
+            'img_path' => 'required'
+        ]);
         $user = User::create([
             'email' => trim($request->email),
             'password' => bcrypt($request->password),
