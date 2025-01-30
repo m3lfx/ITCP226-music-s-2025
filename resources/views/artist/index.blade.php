@@ -31,6 +31,7 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $artists->links() }}
     </div>
 
 

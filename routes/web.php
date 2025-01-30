@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArtistController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ListenerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -101,4 +102,6 @@ Route::prefix('artists')->group(function () {
 Route::view('/register', 'user.register');
 Route::post('/user/register', [UserController::class, 'register'])->name('user.register'); 
 Route::get('/user/profile', [UserController::class, 'profile'])->name('user.profile');
+Route::get('/listeners/{id}/restore',  [ListenerController::class, 'restore'])->name('listeners.restore');
 Route::resource('albums', AlbumController::class);
+Route::resource('listeners', ListenerController::class);

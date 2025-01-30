@@ -43,5 +43,6 @@
 
             </tbody>
         </table>
+        {{$albums->links()}}
     </div>
 @endsection

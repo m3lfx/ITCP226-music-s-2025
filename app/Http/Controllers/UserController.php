@@ -25,7 +25,7 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:6',
             'lname' => 'required|alpha',
-            'img_path' => 'required'
+            'img_path' => 'required|mimes:jpg'
         ];
         $messages = [
             'required' => 'The :attribute ay may content',
