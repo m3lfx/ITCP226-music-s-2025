@@ -62,5 +62,6 @@
             <button type="submit" class="btn btn-primary">Submit</button>
             <button type="submit" class="btn btn-secondary">Cancel</button>
         </form>
+        
     </div>
 @endsection

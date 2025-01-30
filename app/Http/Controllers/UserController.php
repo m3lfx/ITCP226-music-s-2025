@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Listener;
 use App\Models\User;
+use App\Models\Album;
 use Hash;
 use Auth;
 use Validator;
@@ -77,4 +78,28 @@ class UserController extends Controller
         // dd($listener);
         return view('user.profile', compact('user', 'listener'));
     }
+
+    public function login()
+    {
+        return view('user.login');
+    }
+
+    public function postSignin(Request $request)
+    {
+        $rules = [
+            'email' => 'required|email',
+            'password' => 'required',
+          
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+    }
+
+    
 }
