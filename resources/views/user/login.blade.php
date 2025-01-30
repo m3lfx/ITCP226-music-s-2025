@@ -1,6 +1,6 @@
 @extends('layouts.base')
 @section('body')
-    <div class="row">
+    <div class="container-lg">
         <div class="col-md-4 col-md-offset-4">
             <h1>Sign In</h1>
 

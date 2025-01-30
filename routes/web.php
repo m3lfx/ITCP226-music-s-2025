@@ -105,7 +105,8 @@ Route::get('/user/profile', [UserController::class, 'profile'])->name('user.prof
 Route::get('/listeners/{id}/restore',  [ListenerController::class, 'restore'])->name('listeners.restore');
 Route::get('/listeners/add-album', [ListenerController::class, 'addAlbums'])->name('listeners.addAlbums');
 Route::post('/listeners/add-album', [ListenerController::class, 'addAlbumListener'])->name('listeners.addAlbumListener');
-Route::get('/login', [UserController::class, 'login'])->name('user.login');
+Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('signin', [UserController::class,'postSignin'])->name('user.signin');
-Route::resource('albums', AlbumController::class);
+Route::get('logout', [UserController::class, 'logout'])->name('logout');
+Route::resource('albums', AlbumController::class)->middleware('auth');
 Route::resource('listeners', ListenerController::class);

@@ -26,7 +26,7 @@ class UserController extends Controller
             'email' => 'required|email',
             'password' => 'required|min:6',
             'lname' => 'required|alpha',
-            'img_path' => 'required|mimes:jpg'
+            'img_path' => 'required|mimes:jpg,png'
         ];
         $messages = [
             'required' => 'The :attribute ay may content',
@@ -89,7 +89,7 @@ class UserController extends Controller
         $rules = [
             'email' => 'required|email',
             'password' => 'required',
-          
+
         ];
 
         $validator = Validator::make($request->all(), $rules);
@@ -99,7 +99,19 @@ class UserController extends Controller
                 ->withInput();
         }
 
+        if (auth()->attempt(array('email' => $request->email, 'password' => $request->password))) {
+
+            return redirect('/artists');
+        } else {
+            return redirect()->route('user.login')
+                ->with('error', 'Email Address And Password Are Wrong.');
+        }
     }
 
-    
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
+
 }
